@@ -7,11 +7,8 @@
 public class FechaYHora
 {
     // instance variables - replace the example below with your own
-    private DisplayDosCaracteres dia;
-    private DisplayDosCaracteres mes;
-    private DisplayDosCaracteres ano;
-    private NumberDisplay hora;
-    private NumberDisplay min;
+    private CalendarioBasico calendario;
+    private ClockDisplay reloj;
 
     /**
      * Constructor for objects of class FechaYHora
@@ -19,11 +16,25 @@ public class FechaYHora
     public FechaYHora()
     {
         // initialise instance variables
-        dia = new DisplayDosCaracteres(31);
-        mes = new DisplayDosCaracteres(13);
-        ano = new DisplayDosCaracteres(100);
-        hora = new NumberDisplay(24);
-        min = new NumberDisplay(60);
+        calendario = new CalendarioBasico();
+        reloj = new ClockDisplay();
+    }
+    
+    /**
+     * 
+     */
+    public void avanzar()
+    {
+        reloj.timeTick();
+        if(reloj.hours.getValue() == 0){
+            calendario.avanzarFecha();
+        }
+    }
+    
+    public void fijarFechaYHora(int nDia,int nMes,int nAno, int nHora, int nMin)
+    {
+        calendario.fijarFecha(nDia,nMes,nAno);
+        reloj.setTime(nHora,nMin);
     }
 
     /**
@@ -34,8 +45,7 @@ public class FechaYHora
      */
     public String getFechaYHora()
     {
-        String fecha = dia.getTextoDelDisplay() + "-" + mes.getTextoDelDisplay() + "-" + ano.getTextoDelDisplay() + " " + hora.getDisplayValue() + ":" + 
-            min.getDisplayValue();
+        String fecha = calendario.obtenerFecha() + " " + reloj.getTime();
         return fecha;
     }
 }
