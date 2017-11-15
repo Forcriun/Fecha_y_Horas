@@ -13,7 +13,7 @@
  */
 public class ClockDisplay
 {
-    public NumberDisplay hours;
+    private NumberDisplay hours;
     private NumberDisplay minutes;
     private String displayString;    // simulates the actual display
     

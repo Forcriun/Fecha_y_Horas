@@ -26,15 +26,13 @@ public class FechaYHora
     }
 
     /**
-     * Método que avanza la fecha y la hora en un minuto.
-     * 
-     * Compara el estado del campo del objeto de la clase NumberDisplay que crea
-     * la clase ClockDisplay.
+     * Método que avanza la fecha y la hora en un minuto, comparando dos
+     * cadenas.
      */
     public void avanzar()
     {
         reloj.timeTick();
-        if(reloj.hours.getValue() == 0){
+        if(reloj.getTime().equals("00:00")){
             calendario.avanzarFecha();
         }
     }
@@ -58,6 +56,4 @@ public class FechaYHora
         return fecha;
     }
 }
-
-
 
